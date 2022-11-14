@@ -6,17 +6,17 @@ on:
     branches: [ main ]
 
 jobs:
-  build-publish-release
+  publish-npm:
     runs-on:  ubuntu-latest
     
-  steps:
-    - uses: actions/checkout@v2
-    
-    - name: 发布NPM包
-      run: |
-        npm config set https://registry.npmjs.org/:_authToken=$NPM_TOKEN
-        npm publish
-      env:
-        NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 发布NPM包
+        run: |
+          npm config set https://registry.npmjs.org/:_authToken=$NPM_TOKEN
+          npm publish
+        env:
+          NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
     
       
