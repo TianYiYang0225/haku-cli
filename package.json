@@ -4,7 +4,7 @@
   "description": "",
   "main": "cli.js",
   "bin": {
-    "haku": "./bin/cli.js"
+    "haku-cli": "./bin/cli.js"
   },
   "scripts": {},
   "keywords": [],
