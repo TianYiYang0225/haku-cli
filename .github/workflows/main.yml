@@ -1,0 +1,22 @@
+# 工作流的名字
+name: npm to haku-cli and create release
+# 对main分支进行push操作时，触发该条工作流
+on: 
+  push: 
+    branches: [ main ]
+
+jobs:
+  build-publish-release
+    runs-on:  ubuntu-latest
+    
+  steps:
+    - uses: actions/checkout@v2
+    
+    - name: 发布NPM包
+      run: |
+        npm config set https://registry.npmjs.org/:_authToken=$NPM_TOKEN
+        npm publish
+      env:
+        NPM_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+    
+      
